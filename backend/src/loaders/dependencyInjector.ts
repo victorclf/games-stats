@@ -7,7 +7,7 @@ export default () => {
 
 		return { };
 	} catch (e) {
-		LoggerInstance.error('🔥 Error on dependency injector loader: %o', e);
+		LoggerInstance.error('Error on dependency injector loader: %o', e);
 		throw e;
 	}
 };
