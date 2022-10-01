@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import routes from '@/api';
 import config from '@/config';
+import { errors } from 'celebrate';
 
 export default ({ app }: { app: express.Application }) => {
 	app.get('/', (req, res) => {
@@ -28,7 +29,10 @@ export default ({ app }: { app: express.Application }) => {
 		next(err);
 	});
 
-	/// error handlers
+	// Celebrate error handler to validation errors
+	app.use(errors());
+
+	/// Other error handlers
 	app.use((err, req, res, next) => {
 		/**
 		 * Handle 401 thrown by express-jwt library
