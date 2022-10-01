@@ -6,5 +6,5 @@ export default () => {
 	const app = Router();
 	games(app);
 
-	return app
+	return app;
 }
