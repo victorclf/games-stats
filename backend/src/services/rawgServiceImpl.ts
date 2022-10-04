@@ -21,6 +21,8 @@ export default class RAWGServiceImpl extends RAWGService {
 	public async getGames({ search, page = 1, page_size = 20}: { search?: string, page?: number, page_size?: number}) {
 		const logger: Logger = Container.get('logger');
 
+		// TODO Here we should check if the result for this query is present in an in-memory cache like Redis to avoid an external API call
+
 		try {
 			const response = await this.rawgApi.get('/games', {
 				params: { 
@@ -31,6 +33,8 @@ export default class RAWGServiceImpl extends RAWGService {
 			});
 
 			logger.debug(`RAWG API: ${response.status} ${response.request.path}`);
+
+			// TODO Here we should update the in-memory cache with the query result
 
 			return response.data;
 		} catch (e) {
