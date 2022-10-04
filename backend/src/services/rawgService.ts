@@ -1,3 +1,3 @@
 export default abstract class RAWGService {
-	abstract search(search?: string, page?: number, page_size?: number): Promise<any>;
+	abstract getGames({ search, page, page_size}: { search?: string, page?: number, page_size?: number}): Promise<any>;
 }
