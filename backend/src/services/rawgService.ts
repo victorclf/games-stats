@@ -1,11 +1,3 @@
-import { Service } from 'typedi';
-
-@Service()
-export default class RAWGService {
-	constructor(
-	) { }
-
-	public async search() {
-		return 'half-life 3';
-	}
+export default abstract class RAWGService {
+	abstract search(search?: string, page?: number, page_size?: number): Promise<any>;
 }

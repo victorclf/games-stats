@@ -26,4 +26,9 @@ export default {
   api: {
     prefix: '/api/v1',
   },
+
+  /**
+   * Default encoding. (added for use with fs.readFile)
+   */
+  encoding: (process.env.ENCODING ?? 'utf-8') as BufferEncoding,
 };
