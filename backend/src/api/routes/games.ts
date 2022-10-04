@@ -1,4 +1,4 @@
-import RAWGService from '@/services/rawgService';
+import GamesService, { SearchResult } from '@/services/gamesService';
 import { celebrate, Joi } from 'celebrate';
 import { NextFunction, Request, Response, Router } from 'express';
 import Container from 'typedi';
@@ -15,15 +15,15 @@ export default (app: Router) => {
 			query: Joi.object({
 				search: Joi.string(),
 				page: Joi.number().min(1),
-				page_size: Joi.number().min(1).max(100),
+				page_size: Joi.number().min(1).max(20),
 			}),
 		}),
 		async (req: Request, res: Response, next: NextFunction) => {
 			const logger: Logger = Container.get('logger');
-			logger.debug('/games endpoint called with params: %o', req.params);
+			logger.debug('/games endpoint called with params: %o', req.query);
 			try {
-				const rawgService = Container.get(RAWGService);
-				const result: string = await rawgService.search();
+				const gamesService = Container.get(GamesService);
+				const result: SearchResult[] = await gamesService.search(req.query);
 				return res.status(200).json(result).end();
 			} catch (e) {
 				logger.error('Error: %o', e);
