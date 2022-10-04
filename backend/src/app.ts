@@ -17,12 +17,14 @@ async function startServer() {
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
 	await require('./loaders').default({ expressApp: app });
 
-	app.listen(config.port, () => {
+	const server = app.listen(config.port, () => {
 		Logger.info(`Server listening on port: ${config.port}`);
 	}).on('error', err => {
 		Logger.error(err);
 		process.exit(1);
 	});
+
+	return { app, server };
 }
 
-startServer();
+export default startServer();
