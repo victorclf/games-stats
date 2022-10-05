@@ -1,11 +1,15 @@
 # games-stats
 This is a proof of concept of a Games DB web app.
 
+
+
 ## Requirements
 - Given a title query, return a list of videogames matching that title (name, imageUrl, releaseDate) from the Rawg service.
 
 ## API Endpoints
 - Search games: `/api/v1/games/search=X&page=1&page_size=[1, 20]`
+
+
 
 ## Installation
 
@@ -18,6 +22,7 @@ This is a proof of concept of a Games DB web app.
 
 ### Frontend
 TODO
+
 
 
 ## Project Structure
@@ -33,6 +38,11 @@ src
 └───tests           # Integration and e2e tests
 ```
 
+### Frontend
+TODO
+
+
+
 ## Decisions
 
 ### Backend
@@ -47,12 +57,21 @@ src
 		- Supports logging with Winston
 	- Already comes with other necessary boilerplate code
 
+### Frontend
+TODO
+
+
+
+## High-Level Architecture
+![Architecture Design](arch.png)
+
+
 
 ## Future Improvements
 
 ### Backend
 - Setup automatic generation of Swagger API documentation
-- Add more test cases to the integration test
+- Add more test cases to games.test.ts
 - Add e2e tests
 - Use an in-memory cache like Redis for caching
 - Is it better to organize src folders by features like Angular instead of by layers?
